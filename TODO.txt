@@ -1,6 +1,7 @@
 TODO (Most important items are listed first)
 
 - Get rid of ElementTree and only use minidom parsing, because ElementTree
-  serialization even if valid causes problems to XSLT processors like xsltproc.
+  serialization, even if valid, causes problems to XSLT processors like
+  xsltproc.
 
 - Rework the way we gather metadata from the OOo document.
