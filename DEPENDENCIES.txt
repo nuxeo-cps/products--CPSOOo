@@ -3,7 +3,7 @@ DEPENDENCIES
 
 You need to have the following products:
 
-  * Buxomly
+  * PyXML
     http://pyxml.sourceforge.net
 
   * elementtree
