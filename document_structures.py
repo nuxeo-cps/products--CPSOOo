@@ -148,7 +148,6 @@ ooo_docbook_document_layout = {
                 'label': 'cpsdoc_News_attachedFile_label',
                 'hidden_empty': 1,
                 'description': 'cpsdoc_News_attachedFile_description',
-                'help': "Il n'est pas utile de remplir les champs ci-dessous, hormis le champ « Titre ». Ils seront renseignés directement lors du téléchargement de votre document OpenOffice.",
                 'deletable': 1,
                 'size_max': 5*1024*1024,
                 'allowed_suffixes': ('.sxw',),
