@@ -30,7 +30,7 @@ from zipfile import BadZipfile
 from cStringIO import StringIO
 
 from Globals import InitializeClass
-from Acquisition import aq_base, aq_parent, aq_inner
+from Acquisition import aq_base
 from AccessControl import ClassSecurityInfo
 from OFS.Image import File
 
@@ -39,7 +39,7 @@ from Products.CPSDocument.CPSDocument import CPSDocument
 
 from App.Common import rfc1123_date
 
-from elementtree.ElementTree import XML, ElementTree, Element, SubElement
+from elementtree.ElementTree import XML, ElementTree
 from elementtree.ElementPath import findall as xpath_findall
 from elementtree.ElementPath import find as xpath_find
 
