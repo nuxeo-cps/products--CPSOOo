@@ -667,11 +667,11 @@ class OOoDocbookDocument(CPSDocument):
             'textnodes': (
                 ('text:p', 'text:style-name', 'Title',
                  toUnicode(self.Title())),
-                ('text:p', 'text:style-name', 'Résumé/Abstract',
+                ('text:p', 'text:style-name', 'Abstract',
                  toUnicode(self.Description())),
                 ('text:p', 'text:style-name', 'Bibliocoverage',
                  toUnicode(self.Coverage())),
-                ('text:p', 'text:style-name', 'Source',
+                ('text:p', 'text:style-name', 'Bibliosource',
                  toUnicode(self.Source())),
                 ),
             }
