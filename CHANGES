@@ -1,13 +1,12 @@
 Requires:
 ~~~~~~~~~
-- Now using CPSUtil.integration.isProductPresent method.
+-
 New features:
 ~~~~~~~~~~~~~
 -
 Bug fixes:
 ~~~~~~~~~~
-- Removed code that shouldn't be in the CPSOOo installer.
-- Synced the unit tests with the latest ooo2dbk output.
+-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -

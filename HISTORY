@@ -1,4 +1,21 @@
 *******************************************
+** CPSOOo V0.0.7 [R1 build 2005/03/07-16:09 by madarche]
+
+Requires:
+~~~~~~~~~
+- Now using CPSUtil.integration.isProductPresent method.
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Removed code that shouldn't be in the CPSOOo installer.
+- Synced the unit tests with the latest ooo2dbk output.
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSOOo V0.0.6 [R1 build 2005/02/01-12:52 by madarche]
 
 Requires:
