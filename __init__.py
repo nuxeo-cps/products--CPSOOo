@@ -7,6 +7,7 @@ log_key = 'CPSOOo.__init__'
 from zLOG import LOG, \
      TRACE, DEBUG, BLATHER, INFO, PROBLEM, WARNING, ERROR, PANIC
 
+imports_ok = True
 try:
     from elementtree.ElementTree import ElementTree
 
@@ -39,18 +40,13 @@ try:
 except ImportError:
     LOG(log_key, PROBLEM,
         "CPSOOo cannot be loaded because the elementtree module is missing")
+    imports_ok = False
 
-
-def initialize(registrar):
-    try:
-        from elementtree.ElementTree import ElementTree
-
+if imports_ok:
+    def initialize(registrar):
         ContentInit('CPSOOo Types',
                     content_types = contentClasses,
                     permission = AddPortalContent,
                     extra_constructors = contentConstructors,
                     fti = fti,
                     ).initialize(registrar)
-    except ImportError:
-        LOG(log_key, PROBLEM,
-            "CPSOOo cannot be loaded because the elementtree module is missing")
