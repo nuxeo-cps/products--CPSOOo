@@ -9,7 +9,8 @@ from os.path import join, abspath, dirname
 import xml.dom
 import xml.dom.minidom
 from Products.CPSOOo.OOoDocbookDocument import iterDoc, toUnicode, \
-     replaceKeywords, replaceBiblio, replaceTextElementsByStyleName
+     replaceKeywords, replaceBiblio, replaceTextElementsByStyleName, \
+     replaceCopyright
 
 
 def docorder_iter_filter(node, filter_func, **kw):
@@ -104,6 +105,29 @@ class TestOOXMLHelpers(unittest.TestCase):
         text_val = node.firstChild.nodeValue
         self.assertEqual(text_val, 'The Bibliosource')
 
+
+    def test_replaceCopyright(self):
+        doc = self._getOriginalXML()
+        iter_context = {
+            'copyright': 'The Copyright',
+            'year': 'year 2004',
+            'holder': 'Indesko Nuxeo',
+            }
+        iterDoc(doc, replaceCopyright, iter_context)
+
+        copyright_node = self._getElementsByStyleName(doc, 'Copyright')[0]
+        copyrights =  copyright_node.firstChild.nodeValue
+        self.assertEqual(copyrights, iter_context['copyright'] + ' ')
+
+        # 'Year' node is inside 'Copyright'
+        node = self._getElementsByStyleName(copyright_node, 'Year')[0]
+        year = node.firstChild.nodeValue
+        self.assertEqual(year, iter_context['year'])
+
+        # 'Holder' node is inside 'Copyright'
+        node = self._getElementsByStyleName(copyright_node, 'Holder')[0]
+        year = node.firstChild.nodeValue
+        self.assertEqual(year, iter_context['holder'])
 
 def test_suite():
     suite = unittest.TestSuite()
