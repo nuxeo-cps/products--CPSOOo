@@ -54,10 +54,7 @@ WebDavLockItem = 'WebDAV Lock items'
 WebDavUnlockItem = 'WebDAV Unlock items'
 
 LAYERS = {
-    'cpsooo_image': 'Products/CPSOOo/skins/cpsooo_image',
-    'cpsooo_style': 'Products/CPSOOo/skins/cpsooo_style',
-    'cpsooo_script': 'Products/CPSOOo/skins/cpsooo_script',
-    'cpsooo_template': 'Products/CPSOOo/skins/cpsooo_template',
+    'cpsooo': 'Products/CPSOOo/skins/cpsooo',
     }
 
 class ClientInstaller(CPSInstaller):
