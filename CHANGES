@@ -9,6 +9,7 @@ Bug fixes:
 ~~~~~~~~~~
 - Changed maximum allowed size for OOo documents to 5 Mb instead of 20 Mb which
   was too far from reality.
+- Added missing i18n config files.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
