@@ -3,14 +3,10 @@ Requires:
 -
 New features:
 ~~~~~~~~~~~~~
-- Added an "Edit online" action for the Document OpenOffice.org DocBook type
-  directly in the object action box.
+-
 Bug fixes:
 ~~~~~~~~~~
-- Changed maximum allowed size for OOo documents to 5 Mb instead of 20 Mb which
-  was too far from reality.
-- Added missing i18n config files.
+-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
-- Made the code of OOoDocbookDocument.py more generic so that it will be able to
-  deal with both DocBook article and DocBook book documents.
+-
