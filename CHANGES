@@ -12,4 +12,5 @@ Bug fixes:
 - Added missing i18n config files.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
--
+- Made the code of OOoDocbookDocument.py more generic so that it will be able to
+  deal with both DocBook article and DocBook book documents.

@@ -372,6 +372,10 @@ class OOoDocbookDocument(CPSDocument):
 
     security = ClassSecurityInfo()
 
+    top_element_name = 'article'
+    #top_element_name = 'book'
+    metainfo_element_name = top_element_name + 'info'
+
     security.declareProtected(View, 'exportXmlDocbook')
     def exportXmlDocbook(self, REQUEST=None, **kw):
         """Export XML, in the Docbook XML format, for this document.
@@ -489,10 +493,10 @@ class OOoDocbookDocument(CPSDocument):
 
         doc = ElementTree(XML(file_xml_string))
         rootElt = doc.getroot()
-        articleInfoElt = xpath_find(rootElt, 'articleinfo')
+        metainfoElt = xpath_find(rootElt, self.metainfo_element_name)
 
-        title = findFirstText(articleInfoElt, 'title')
-        elts = xpath_findall(articleInfoElt, 'abstract/para')
+        title = findFirstText(metainfoElt, 'title')
+        elts = xpath_findall(metainfoElt, 'abstract/para')
         abstract = ''
         delimiter = ''
         for elt in elts:
@@ -502,18 +506,18 @@ class OOoDocbookDocument(CPSDocument):
 
         LOG(log_key, DEBUG, "_updateMetadataFromDocument abstract = %s" % abstract)
 
-        year = findText(articleInfoElt, 'copyright/year')
-        holder = findText(articleInfoElt, 'copyright/holder')
+        year = findText(metainfoElt, 'copyright/year')
+        holder = findText(metainfoElt, 'copyright/holder')
         rights = " ".join(filter(None, [year, holder]))
         if rights:
             rights = "Copyright © " + rights
 
-        coverage = findFirstText(articleInfoElt, 'bibliocoverage')
+        coverage = findFirstText(metainfoElt, 'bibliocoverage')
         LOG(log_key, DEBUG, "_updateMetadataFromDocument coverage = %s" % coverage)
-        source = findFirstText(articleInfoElt, 'bibliosource')
+        source = findFirstText(metainfoElt, 'bibliosource')
         LOG(log_key, DEBUG, "_updateMetadataFromDocument source = %s" % source)
         relation = ''
-        relationElts = xpath_findall(articleInfoElt,
+        relationElts = xpath_findall(metainfoElt,
                                      'bibliorelation/ulink')
         for elt in relationElts:
             if elt.get('url'):
@@ -521,7 +525,7 @@ class OOoDocbookDocument(CPSDocument):
                 break
 
         contributors = []
-        contributorsElts = xpath_findall(articleInfoElt, 'othercredit')
+        contributorsElts = xpath_findall(metainfoElt, 'othercredit')
         for contributorsElt in contributorsElts:
             firstname = findFirstText(contributorsElt, 'firstname')
             surname = findFirstText(contributorsElt, 'surname')
@@ -529,7 +533,7 @@ class OOoDocbookDocument(CPSDocument):
             if contributor:
                 contributors.append(contributor)
 
-        keywordElts = xpath_findall(articleInfoElt, 'keywordset/keyword')
+        keywordElts = xpath_findall(metainfoElt, 'keywordset/keyword')
         keywords = [toLatin9(x.text) for x in keywordElts or ()]
         LOG(log_key, DEBUG, "_updateMetadataFromDocument keywords = %s" % ", ".join(keywords))
 
@@ -558,8 +562,8 @@ class OOoDocbookDocument(CPSDocument):
 
         # Parse XML into DOM and modify it.
         document = xml.dom.minidom.parseString(file_xml_string)
-        articleinfoElt = document.getElementsByTagName('articleinfo')[0]
-        paraElts = articleinfoElt.getElementsByTagName('para')
+        metainfoElt = document.getElementsByTagName(self.metainfo_element_name)[0]
+        paraElts = metainfoElt.getElementsByTagName('para')
         for elt in paraElts:
             if elt.getAttribute('role') == 'demandeur':
                 demandeur = elt.childNodes[0].nodeValue
