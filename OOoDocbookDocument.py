@@ -29,7 +29,6 @@ from zipfile import ZIP_DEFLATED
 from zipfile import BadZipfile
 from cStringIO import StringIO
 
-
 from Globals import InitializeClass
 from Acquisition import aq_base, aq_parent, aq_inner
 from AccessControl import ClassSecurityInfo
@@ -47,7 +46,7 @@ from elementtree.ElementPath import find as xpath_find
 from zLOG import LOG, \
      TRACE, DEBUG, BLATHER, INFO, PROBLEM, WARNING, ERROR, PANIC
 
-logKey = 'OOoDocbookDocument'
+log_key = 'OOoDocbookDocument'
 
 def toLatin9(s):
     if s is None:
@@ -105,10 +104,10 @@ def replaceTextElements(node, iter_context):
     document = node.ownerDocument
 
     for nodename, attr, attrval, newval in iter_context['textnodes']:
-##         LOG(logKey, DEBUG, "nodename = %s" % repr(nodename))
-##         LOG(logKey, DEBUG, "attr = %s" % repr(attr))
-##         LOG(logKey, DEBUG, "attrval = %s" % repr(attrval))
-##         LOG(logKey, DEBUG, "newval = %s" % repr(newval))
+##         LOG(log_key, DEBUG, "nodename = %s" % repr(nodename))
+##         LOG(log_key, DEBUG, "attr = %s" % repr(attr))
+##         LOG(log_key, DEBUG, "attrval = %s" % repr(attrval))
+##         LOG(log_key, DEBUG, "newval = %s" % repr(newval))
         if node.nodeName != nodename:
             continue
         if node.getAttribute(attr) != toUnicode(attrval):
@@ -134,10 +133,10 @@ def replaceTextElementsByStyleName(node, iter_context):
     document = node.ownerDocument
 
     for nodename, attr, style_name, newval in iter_context['textnodes']:
-##         LOG(logKey, DEBUG, "nodename = %s" % repr(nodename))
-##         LOG(logKey, DEBUG, "attr = %s" % repr(attr))
-##         LOG(logKey, DEBUG, "style_name = %s" % repr(style_name))
-##         LOG(logKey, DEBUG, "newval = %s" % repr(newval))
+##         LOG(log_key, DEBUG, "nodename = %s" % repr(nodename))
+##         LOG(log_key, DEBUG, "attr = %s" % repr(attr))
+##         LOG(log_key, DEBUG, "style_name = %s" % repr(style_name))
+##         LOG(log_key, DEBUG, "newval = %s" % repr(newval))
         style_name = toUnicode(style_name)
         if node.nodeName != nodename:
             continue
@@ -170,12 +169,12 @@ def nodeParentStyleNameMatchesStyleName(node, style_name):
     for styleElt in styleElts:
         automatic_style_name = styleElt.getAttribute('style:name')
         parent_style_name = styleElt.getAttribute('style:parent-style-name')
-        LOG(logKey, DEBUG, "node_style_name = %s" % repr(node_style_name))
-        LOG(logKey, DEBUG, "automatic_style_name = %s" % repr(automatic_style_name))
-        LOG(logKey, DEBUG, "parent_style_name = %s" % repr(parent_style_name))
+        LOG(log_key, DEBUG, "node_style_name = %s" % repr(node_style_name))
+        LOG(log_key, DEBUG, "automatic_style_name = %s" % repr(automatic_style_name))
+        LOG(log_key, DEBUG, "parent_style_name = %s" % repr(parent_style_name))
         if (node_style_name == automatic_style_name
             and parent_style_name == style_name):
-            LOG(logKey, DEBUG, "True for style_name = %s" % repr(style_name))
+            LOG(log_key, DEBUG, "True for style_name = %s" % repr(style_name))
             return True
     return False
 
@@ -183,7 +182,7 @@ def nodeParentStyleNameMatchesStyleName(node, style_name):
 def replaceKeywords(node, iter_context):
     if node.nodeName != 'text:p':
         return
-    if node.getAttribute('text:style-name') != toUnicode('Mots clés'):
+    if node.getAttribute('text:style-name') != toUnicode('Keywords'):
         return
 
     document = node.ownerDocument
@@ -198,7 +197,7 @@ def replaceKeywords(node, iter_context):
     for k in keywords:
         n += 1
         span_node = document.createElement('text:span')
-        span_node.setAttribute('text:style-name', toUnicode('Mot clé'))
+        span_node.setAttribute('text:style-name', toUnicode('Keyword'))
         span_node.appendChild(document.createTextNode(k))
         node.appendChild(span_node)
         if n != nb:
@@ -206,22 +205,22 @@ def replaceKeywords(node, iter_context):
 
 
 def replaceContributors(contributors, document):
-    LOG(logKey, DEBUG, "contributors = %s" % str(contributors))
+    LOG(log_key, DEBUG, "contributors = %s" % str(contributors))
     officeBodyElt = document.getElementsByTagName('office:body')[0]
     paraElts = officeBodyElt.getElementsByTagName('text:p')
     for elt in paraElts:
-        if elt.getAttribute('text:style-name') == 'Contributeur':
+        if elt.getAttribute('text:style-name') == 'Othercredit':
             officeBodyElt.removeChild(elt)
         if (elt.getAttribute('text:style-name') == 'Heading'
             and elt.hasChildNodes()
-            and elt.childNodes[0].nodeValue == 'Contributeurs'):
+            and elt.childNodes[0].nodeValue == 'Othercredit'):
             officeBodyElt.removeChild(elt)
 
     contributorsCount = len(contributors)
     if contributorsCount == 0:
         return
 
-    # Then let's add the new Contributeur elements after the Title, Author or
+    # Then let's add the new Othercredit elements after the Title, Author or
     # Authorblurb elements if we find any.
     officeBodyEltElts = officeBodyElt.childNodes
     whereElt = None
@@ -232,15 +231,15 @@ def replaceContributors(contributors, document):
             whereElt = elt
         if elt.getAttribute('text:style-name') == 'Authorblurb':
             whereElt = elt
-        if elt.getAttribute('text:style-name') == 'Source':
+        if elt.getAttribute('text:style-name') == 'Bibliosource':
             whereElt = elt
-        if elt.getAttribute('text:style-name') == 'Relation':
+        if elt.getAttribute('text:style-name') == 'Bibliorelation':
             whereElt = elt
             break
 
     headingCreditElt = document.createElement('text:p')
     headingCreditElt.setAttribute('text:style-name', 'Heading')
-    headingCreditElt.appendChild(document.createTextNode("Contributeurs"))
+    headingCreditElt.appendChild(document.createTextNode("Othercredit"))
     if whereElt is None:
         officeBodyElt.appendChild(headingCreditElt)
     else:
@@ -254,12 +253,12 @@ def replaceContributors(contributors, document):
     contributors.reverse()
     for k in contributors:
         pElt = document.createElement('text:p')
-        pElt.setAttribute('text:style-name', 'Contributeur')
+        pElt.setAttribute('text:style-name', 'Othercredit')
         officeBodyElt.insertBefore(pElt, headingCreditElt.nextSibling)
 
         # Here we only want to split the contributor's fullname in 2 parts
         fullname = k.split(None, 1)
-        LOG(logKey, DEBUG, "fullname = %s" % str(fullname))
+        LOG(log_key, DEBUG, "fullname = %s" % str(fullname))
         if fullname:
             if len(fullname) == 2:
                 firstname = fullname[0]
@@ -268,8 +267,8 @@ def replaceContributors(contributors, document):
                 firstname = ""
                 surname = fullname[0]
 
-            LOG(logKey, DEBUG, "firstname = %s" % firstname)
-            LOG(logKey, DEBUG, "surname = %s" % surname)
+            LOG(log_key, DEBUG, "firstname = %s" % firstname)
+            LOG(log_key, DEBUG, "surname = %s" % surname)
             if firstname:
                 spanElt = document.createElement('text:span')
                 spanElt.setAttribute('text:style-name', 'Firstname')
@@ -286,7 +285,7 @@ def replaceContributors(contributors, document):
 def replaceBiblio(node, iter_context):
     if node.nodeName != 'text:p':
         return
-    if node.getAttribute('text:style-name') != 'Relation':
+    if node.getAttribute('text:style-name') != 'Bibliorelation':
         return
 
     document = node.ownerDocument
@@ -373,39 +372,6 @@ class OOoDocbookDocument(CPSDocument):
 
     security = ClassSecurityInfo()
 
-    security.declareProtected(View, 'duplicate')
-    def duplicate(self, proxy, selected_folders=[]):
-        """Duplicate a StructuredDoducment with a resulting copy that has all
-        its metadata fields empty except for the reference field which corresponds
-        to the original document.
-        """
-        LOG(logKey, DEBUG, "selected_folders = %s" % str(selected_folders))
-        portal = self.portal_url.getPortalObject()
-        folders = []
-        for selected_folder_path in selected_folders:
-            folders.append(portal.unrestrictedTraverse(selected_folder_path))
-
-        proxyId = proxy.getId()
-        proxyContainer = aq_parent(aq_inner(proxy))
-        for folder in folders:
-            ref = proxyContainer.manage_CPScopyObjects([proxyId])
-            pastedIdsDict = folder.manage_CPSpasteObjects(ref)
-            #LOG(logKey, DEBUG, "pastedIdsDict = %s" % str(pastedIdsDict))
-            duplicateProxyId = pastedIdsDict[0]['new_id']
-            duplicateProxy = getattr(folder, duplicateProxyId)
-
-            duplicateDocument = duplicateProxy.getEditableContent()
-            duplicateDocument.edit(
-                Title="(Duplicata) " + self.Title(),
-                Subject=[],
-                Contributors=[],
-                Rights='',
-                Source='',
-                Relation=self.Reference,
-                Reference='',
-                Coverage='',
-                Keywords=[])
-
     security.declareProtected(View, 'exportXmlDocbook')
     def exportXmlDocbook(self, REQUEST=None, **kw):
         """Export XML, in the Docbook XML format, for this document.
@@ -419,7 +385,7 @@ class OOoDocbookDocument(CPSDocument):
         # Regexp to replace "xxx.sxw" by "xxx.docb.xml"
         dbFileName = re.sub('\..+?$', '.docb.xml', self.file.title)
         dbFilePath = os.path.join(tmpDirPath, dbFileName)
-        LOG(logKey, DEBUG, "DocBook file path = %s" % dbFilePath)
+        LOG(log_key, DEBUG, "DocBook file path = %s" % dbFilePath)
         filePaths.append(dbFilePath)
         dbFile = open(dbFilePath, 'w+c')
         dbFile.write(str(self.file_xml))
@@ -428,7 +394,7 @@ class OOoDocbookDocument(CPSDocument):
         imageFileNames = self.file_xml_subfiles
         for imageFileName in imageFileNames:
             imageFilePath = os.path.join(tmpDirPath, imageFileName)
-            LOG(logKey, DEBUG, "Image file path = %s" % imageFilePath)
+            LOG(log_key, DEBUG, "Image file path = %s" % imageFilePath)
             filePaths.append(imageFilePath)
             imageFile = open(imageFilePath, 'w+c')
             imageFile.write(str(getattr(self, imageFileName)))
@@ -437,12 +403,12 @@ class OOoDocbookDocument(CPSDocument):
         # Regexp to replace "xxx.sxw" by "xxx.zip"
         archiveFileName = re.sub('\..+?$', '.zip', self.file.title)
         archiveFilePath = os.path.join(tmpDirPath, archiveFileName)
-        LOG(logKey, DEBUG, "Archive file path = %s" % archiveFilePath)
+        LOG(log_key, DEBUG, "Archive file path = %s" % archiveFilePath)
         # Create a ZipFile object to write into
         archiveFile = ZipFile(archiveFilePath, 'w')
         archiveInternalSubDirName = dbFileName.split('.')[0]
         for filePath in filePaths:
-            LOG(logKey, DEBUG, "adding file to archive = %s" % filePath)
+            LOG(log_key, DEBUG, "adding file to archive = %s" % filePath)
             if filePath != dbFilePath:
                 filePathInTheArchive = os.path.join(archiveInternalSubDirName,
                                                     'images', os.path.split(filePath)[1])
@@ -494,7 +460,7 @@ class OOoDocbookDocument(CPSDocument):
         CPSDocument.inheritedAttribute('postCommitHook')(
             self, datamodel=datamodel)
 
-        LOG(logKey, DEBUG, 'postCommitHook: dm.dirty=%s' %
+        LOG(log_key, DEBUG, 'postCommitHook: dm.dirty=%s' %
             datamodel.dirty.keys())
 
         if datamodel.isDirty('file'):
@@ -506,16 +472,16 @@ class OOoDocbookDocument(CPSDocument):
     def _updateMetadataFromDocument(self, datamodel):
         """Update the object's metadata from the document."""
 
-        LOG(logKey, DEBUG, "_updateMetadataFromDocument")
+        LOG(log_key, DEBUG, "_updateMetadataFromDocument")
 
         if not self.file_xml:
-            LOG(logKey, PROBLEM,
+            LOG(log_key, PROBLEM,
                 "_updateMetadataFromDocument no file_xml -> no update")
             return
 
         file_xml_string = str(self.file_xml)
         if not file_xml_string:
-            LOG(logKey, PROBLEM,
+            LOG(log_key, PROBLEM,
                 "_updateMetadataFromDocument no file_xml_string -> no update")
             return
 
@@ -532,7 +498,7 @@ class OOoDocbookDocument(CPSDocument):
                 abstract = '%s%s%s' % (abstract, delimiter, toLatin9(elt.text))
                 delimiter = '\n\n'
 
-        LOG(logKey, DEBUG, "_updateMetadataFromDocument abstract = %s" % abstract)
+        LOG(log_key, DEBUG, "_updateMetadataFromDocument abstract = %s" % abstract)
 
         year = findText(articleInfoElt, 'copyright/year')
         holder = findText(articleInfoElt, 'copyright/holder')
@@ -541,9 +507,9 @@ class OOoDocbookDocument(CPSDocument):
             rights = "Copyright © " + rights
 
         coverage = findFirstText(articleInfoElt, 'bibliocoverage')
-        LOG(logKey, DEBUG, "_updateMetadataFromDocument coverage = %s" % coverage)
+        LOG(log_key, DEBUG, "_updateMetadataFromDocument coverage = %s" % coverage)
         source = findFirstText(articleInfoElt, 'bibliosource')
-        LOG(logKey, DEBUG, "_updateMetadataFromDocument source = %s" % source)
+        LOG(log_key, DEBUG, "_updateMetadataFromDocument source = %s" % source)
         relation = ''
         relationElts = xpath_findall(articleInfoElt,
                                      'bibliorelation/ulink')
@@ -563,7 +529,7 @@ class OOoDocbookDocument(CPSDocument):
 
         keywordElts = xpath_findall(articleInfoElt, 'keywordset/keyword')
         keywords = [toLatin9(x.text) for x in keywordElts or ()]
-        LOG(logKey, DEBUG, "_updateMetadataFromDocument keywords = %s" % ", ".join(keywords))
+        LOG(log_key, DEBUG, "_updateMetadataFromDocument keywords = %s" % ", ".join(keywords))
 
         # Do not use unfilled data from an OOo document on to the
         # portal. Unfilled data is marked up as <xxxxx>.
@@ -603,7 +569,7 @@ class OOoDocbookDocument(CPSDocument):
 
     def _updateDocumentFromMetadata(self, datamodel):
         """Update the document from the object's metadata."""
-        LOG(logKey, DEBUG, '_updateDocumentFromMetadata')
+        LOG(log_key, DEBUG, '_updateDocumentFromMetadata')
 
         file = getattr(aq_base(self), 'file', None)
         if file is None:
@@ -621,7 +587,7 @@ class OOoDocbookDocument(CPSDocument):
             try:
                 z = ZipFile(StringIO(str(file)), 'r')
             except BadZipfile:
-                LOG(logKey, DEBUG, "Attached file is not a zipfile")
+                LOG(log_key, DEBUG, "Attached file is not a zipfile")
                 return
             for zfilename in z.namelist():
                 filename = zfilename.replace('/', '_')
@@ -638,7 +604,7 @@ class OOoDocbookDocument(CPSDocument):
             z.close()
 
             if content_xml is None:
-                LOG(logKey, DEBUG,
+                LOG(log_key, DEBUG,
                     "Document does not have any content.xml")
                 return
 
@@ -751,5 +717,5 @@ def addOOoDocbookDocumentInstance(container, id, REQUEST=None, **kw):
 
     if REQUEST:
         object = container._getOb(id)
-        LOG(logKey, DEBUG, "object = %s" % object)
+        LOG(log_key, DEBUG, "object = %s" % object)
         REQUEST.RESPONSE.redirect(object.absolute_url() + '/manage_main')
