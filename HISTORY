@@ -1,4 +1,24 @@
 *******************************************
+** CPSOOo V0.0.6 [R1 build 2005/02/01-12:52 by madarche]
+
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Disabled CPSOOo if the elementtree module cannot be imported. This problem
+  might have prevented some CPS servers to start when elementtree was not
+  installed.
+- Removed some CPSOOo legacy code which was manipulating CPSTextWidget while
+  it's really not CPSOOo's business.
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSOOo V0.0.5 [R1 build 2005/01/28-15:02 by madarche]
 
 Requires:
