@@ -6,7 +6,9 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- Disabled CPSOOo if the elementtree module cannot be imported. This problem
+  might have prevented some CPS servers to start when elementtree was not
+  installed.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -

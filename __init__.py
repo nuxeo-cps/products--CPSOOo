@@ -2,52 +2,60 @@
 # $Id$
 """ Init """
 
-from Products.CPSOOo.OOoDocbookDocument import \
-     OOoDocbookDocument, addOOoDocbookDocumentInstance
+log_key = 'CPSOOo.__init__'
 
-from Products.CPSSchemas.ExtendedWidgets import CPSTextWidget
+from zLOG import LOG, \
+     TRACE, DEBUG, BLATHER, INFO, PROBLEM, WARNING, ERROR, PANIC
 
-from Products.CMFCore.utils import ContentInit
-from Products.CMFCore.DirectoryView import registerDirectory
-from Products.CMFCore.CMFCorePermissions import AddPortalContent
+try:
+    from elementtree.ElementTree import ElementTree
 
-from AccessControl import ModuleSecurityInfo
+    from Products.CPSOOo.OOoDocbookDocument import \
+         OOoDocbookDocument, addOOoDocbookDocumentInstance
 
-import AllowModules
+    from Products.CPSSchemas.ExtendedWidgets import CPSTextWidget
 
-#import CookieLogger
+    from Products.CMFCore.utils import ContentInit
+    from Products.CMFCore.DirectoryView import registerDirectory
+    from Products.CMFCore.CMFCorePermissions import AddPortalContent
 
-from zLOG import LOG, INFO, DEBUG
+    from AccessControl import ModuleSecurityInfo
 
-logKey = 'CPSOOo.__init__'
+    import AllowModules
 
-# Removing the 'stx' render format as it is not wanted
-if 'stx' in CPSTextWidget.all_render_formats:
-    index = CPSTextWidget.all_render_formats.index('stx')
-    del CPSTextWidget.all_render_formats[index]
+    # Removing the 'stx' render format as it is not wanted
+    if 'stx' in CPSTextWidget.all_render_formats:
+        index = CPSTextWidget.all_render_formats.index('stx')
+        del CPSTextWidget.all_render_formats[index]
 
-ModuleSecurityInfo('copy').declarePublic('deepcopy')
+    ModuleSecurityInfo('copy').declarePublic('deepcopy')
 
-contentClasses = (
-    OOoDocbookDocument,
-    )
+    contentClasses = (
+        OOoDocbookDocument,
+        )
 
-contentConstructors = (
-    addOOoDocbookDocumentInstance,
-    )
+    contentConstructors = (
+        addOOoDocbookDocumentInstance,
+        )
 
-fti = ()
+    fti = ()
 
-registerDirectory('skins', globals())
+    registerDirectory('skins', globals())
+except ImportError:
+    LOG(log_key, PROBLEM,
+        "CPSOOo cannot be loaded because the elementtree module is missing")
+
 
 def initialize(registrar):
-    ContentInit('CPSOOo Types',
-                content_types = contentClasses,
-                permission = AddPortalContent,
-                extra_constructors = contentConstructors,
-                fti = fti,
-                ).initialize(registrar)
+    try:
+        from elementtree.ElementTree import ElementTree
 
-##     registrar.registerClass(CookieLogger.CookieLogger,
-##                       constructors=(CookieLogger.manage_addCLForm,
-##                                     CookieLogger.manage_addCL,))
+        ContentInit('CPSOOo Types',
+                    content_types = contentClasses,
+                    permission = AddPortalContent,
+                    extra_constructors = contentConstructors,
+                    fti = fti,
+                    ).initialize(registrar)
+    except ImportError:
+        LOG(log_key, PROBLEM,
+            "CPSOOo cannot be loaded because the elementtree module is missing")
