@@ -15,7 +15,8 @@ class TestGlobalInstall(CPSOOoTestCase.CPSOOoTestCase):
     def beforeTearDown(self):
         self.logout()
 
-    def testInstallerScript(self):
+    # CPSOOo is now installed by default so this doesn't work
+    def XXXtestInstallerScript(self):
         from Products.ExternalMethod.ExternalMethod import ExternalMethod
         installer = ExternalMethod('cpsooo_installer', 'CPSOOo Install',
                                    'CPSOOo.install', 'install')
