@@ -9,6 +9,7 @@ Bug fixes:
 - Removed warnings: replaces CMFCore.CMFCorePermissions by CMFCore.permissions.
 - Removed the "help" field on the attached file. It was useless and moreover
   untranslated. It was a remnant from a client project.
+- Synced the attached file labels with those of the other CPS products.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
