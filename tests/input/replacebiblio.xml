@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE office:document-content PUBLIC "-//OpenOffice.org//DTD OfficeDocument 1.0//EN" "office.dtd">
+<office:document-content xmlns:office="http://openoffice.org/2000/office" xmlns:style="http://openoffice.org/2000/style" xmlns:text="http://openoffice.org/2000/text" xmlns:table="http://openoffice.org/2000/table" xmlns:draw="http://openoffice.org/2000/drawing" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:number="http://openoffice.org/2000/datastyle" xmlns:svg="http://www.w3.org/2000/svg" xmlns:chart="http://openoffice.org/2000/chart" xmlns:dr3d="http://openoffice.org/2000/dr3d" xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns:form="http://openoffice.org/2000/form" xmlns:script="http://openoffice.org/2000/script" office:class="text" office:version="1.0">
+ <office:script/>
+ <office:font-decls>
+  <style:font-decl style:name="StarSymbol" fo:font-family="StarSymbol" style:font-charset="x-symbol"/>
+ </office:font-decls>
+ <office:automatic-styles>
+  <style:style style:name="P1" style:family="paragraph" style:parent-style-name="Pubdate">
+   <style:properties fo:font-style="italic"/>
+  </style:style>
+  <number:date-style style:name="N36" style:family="data-style" number:automatic-order="true">
+   <number:day number:style="long"/>
+   <number:text>.</number:text>
+   <number:month number:style="long"/>
+   <number:text>.</number:text>
+   <number:year number:style="long"/>
+  </number:date-style>
+ </office:automatic-styles>
+ <office:body>
+  <text:sequence-decls>
+   <text:sequence-decl text:display-outline-level="0" text:name="Illustration"/>
+   <text:sequence-decl text:display-outline-level="0" text:name="Table"/>
+   <text:sequence-decl text:display-outline-level="0" text:name="Text"/>
+   <text:sequence-decl text:display-outline-level="0" text:name="Drawing"/>
+  </text:sequence-decls>
+  <text:p text:style-name="Title"/>
+  <text:p text:style-name="Title">Dix raisons d&apos;utiliser OpenOffice.org</text:p>
+  <text:p text:style-name="Subtitle"/>
+  <text:p text:style-name="Subtitle">Suite bureautique open source, format de fichier universel</text:p>
+  <text:p text:style-name="P1"><text:modification-date style:data-style-name="N36">25/11/2004</text:modification-date></text:p>
+  <text:p text:style-name="Releaseinfo">Release 0.8</text:p>
+  <text:p text:style-name="Author"><text:span text:style-name="Strong Emphasis">Auteur</text:span> : <text:span text:style-name="Firstname">Arnaud</text:span> <text:span text:style-name="Surname">LEFEVRE</text:span><text:line-break/><text:span text:style-name="Jobtitle">Directeur conseil</text:span>, <text:span text:style-name="Orgname">Indesko</text:span></text:p>
+  <text:p text:style-name="Authorblurb"><text:span text:style-name="Orgname">Authorblurb </text:span><text:span text:style-name="Email">al@indesko.com</text:span></text:p>
+  <text:p text:style-name="Othercredit"><text:span text:style-name="Strong Emphasis">Contributeurs</text:span></text:p>
+  <text:p text:style-name="Othercredit"><text:span text:style-name="Firstname">Eric</text:span> <text:span text:style-name="Surname">BARROCA</text:span></text:p>
+  <text:p text:style-name="Othercredit"><text:span text:style-name="Firstname">Marc-Aurèle</text:span> <text:span text:style-name="Surname">DARCHE</text:span></text:p>
+  <text:p text:style-name="Standard"><text:span text:style-name="Orgname"/></text:p>
+  <text:p text:style-name="Corpauthor"><text:span text:style-name="Orgname">Indesko</text:span></text:p>
+  <text:p text:style-name="Copyright">Copyright © <text:span text:style-name="Year">2004</text:span> <text:span text:style-name="Holder">Indesko</text:span></text:p>
+  <text:p text:style-name="Title">Résumé</text:p>
+  <text:p text:style-name="Abstract">Cet article propose des pistes de réflexion concernant la mise en place et l&apos;utilisation d&apos;OpenOffice.org dans un contexte professionnel et tente de répondre aux questions que vous vous posez au travers de l&apos;étude de dix critères stratégiques.</text:p>
+  <text:p text:style-name="Standard"/>
+  <text:p text:style-name="Title">Mots clés</text:p>
+  <text:p text:style-name="Keywords"><text:span text:style-name="Keyword">OpenOffice.org</text:span>, <text:span text:style-name="Keyword">logiciel libre</text:span>, <text:span text:style-name="Keyword">pérennité</text:span>, <text:span text:style-name="Keyword">interopérabilité</text:span></text:p>
+  <text:p text:style-name="Title">License</text:p>
+  <text:p text:style-name="Legalnotice">Tous droits réservés</text:p>
+  <text:p text:style-name="Standard"/>
+  <text:p text:style-name="Title">Couverture</text:p>
+  <text:p text:style-name="Bibliocoverage">Diffusion publique</text:p>
+  <text:p text:style-name="Title">Source</text:p>
+  <text:p text:style-name="Bibliosource">Présentation de la société Indesko</text:p>
+  <text:p text:style-name="Title">Relation</text:p>
+  <text:p text:style-name="Bibliorelation"><text:span text:style-name="Text body">http://www.indesko.com</text:span></text:p>
+  <text:h text:style-name="P2" text:level="1">Introduction</text:h>
+  <text:p text:style-name="Text body">L&apos;année 2004 offre, avec l&apos;avènement de la bureautique libre, de nouvelles perspectives pour les systèmes d&apos;information des organisations. En effet, de nombreuses entreprises et administrations s&apos;interrogent sur les opportunités proposées par la bureautique libre et notamment par son représentant le plus visible : OpenOffice.org.</text:p>
+ </office:body>
+</office:document-content>
