@@ -1,7 +1,11 @@
 TODO (Most important items are listed first)
 
-- Get rid of ElementTree and only use minidom parsing, because ElementTree
-  serialization, even if valid, causes problems to XSLT processors like
-  xsltproc.
+- Use only PyXML http://pyxml.sourceforge.net for the parsing and processing.
+
+- Get rid of ElementTree because ElementTree serialization, even if valid,
+  causes problems to XSLT processors like xsltproc.
+
+- Get rid of minidom parsing, because minidom is reported to have serious memory
+  leaks.
 
 - Rework the way we gather metadata from the OOo document.

@@ -7,6 +7,8 @@ New features:
 Bug fixes:
 ~~~~~~~~~~
 - Added dependencies information.
+- Updated TODO list.
+- Improved unit tests.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
