@@ -1,0 +1,16 @@
+
+DEPENDENCIES
+
+You need to have the following products:
+
+  * Buxomly
+    http://pyxml.sourceforge.net
+
+  * elementtree
+    http://effbot.org/zone/element-index.htm
+
+    You must have pyexpat in order to use elementtree, either as part of your
+    Python installation itself or by installing PyXML.
+
+    CPSOOo has been tested with elementtree-1.2-20040618.
+
