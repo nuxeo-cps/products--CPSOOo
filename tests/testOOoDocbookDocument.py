@@ -89,20 +89,31 @@ class TestOOoDocbookDocument(CPSOOoTestCase.CPSOOoTestCase):
                          'filename=test.zip')
 
         res_archive = ZipFile(StringIO(out), 'r')
+        res_archive_entries_count = len(res_archive.namelist())
+
         arch_path = join(abspath(dirname(__file__)), 'output', 'test.zip')
         out_archive = ZipFile(arch_path, 'r')
         out_archive_nameslist = out_archive.namelist()
+        out_archive_entries_count = len(out_archive_nameslist)
+
+        self.assertEqual(res_archive_entries_count,
+                         out_archive_entries_count,
+                         ("Input has %s entries "
+                          "while output has %s entries")
+                         % (res_archive_entries_count,
+                            out_archive_entries_count))
 
         for fname in res_archive.namelist():
-            self.failUnless(fname in out_archive_nameslist)
+            self.failUnless(fname in out_archive_nameslist,
+                            "File %s is not present in output"
+                            % fname)
 
         for fname in out_archive_nameslist:
             self.assertEqual(str(res_archive.read(fname)),
                              str(out_archive.read(fname)),
-                             'Input and output content does not match')
-
-        self.assertEqual(len(out_archive.namelist()),
-                         len(res_archive.namelist()))
+                             ("Input and output content "
+                              "does not match for file %s")
+                             % fname)
 
     def _createOOoDocbookDoc(self):
         self.ws.invokeFactory(type_name = self.doc_type,
