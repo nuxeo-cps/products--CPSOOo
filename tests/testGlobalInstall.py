@@ -19,11 +19,8 @@ class TestGlobalInstall(CPSOOoTestCase.CPSOOoTestCase):
         from Products.ExternalMethod.ExternalMethod import ExternalMethod
         installer = ExternalMethod('cpsooo_installer', 'CPSOOo Install',
                                    'CPSOOo.install', 'install')
-        self.portal._setObject('cpsooo_install', installer)
-
-        self.failUnless('cpsooo_installer' in self.portal.objectIds(),
-                        'Installer script was not correctly added to portal')
-
+        self.portal._setObject('cpsooo_installer', installer)
+        self.assert_('cpsooo_installer' in self.portal.objectIds())
         self.portal.cpsooo_installer()
 
     def testOOoDocbookDocumentPortalTypes(self):
