@@ -6,8 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
-- Cleaned code from remaining traces of specific developments.
-- Hardening of export file names, whitespace characters are replaced by "_".
+-
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -

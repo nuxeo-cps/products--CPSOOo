@@ -1,4 +1,21 @@
 *******************************************
+** CPSOOo V0.0.3 [R1 build 2004/11/15-16:04 by madarche]
+
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Cleaned code from remaining traces of specific developments.
+- Hardening of export file names, whitespace characters are replaced by "_".
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSOOo V0.0.2 [R1 build 2004/11/15-14:32 by madarche]
 
 Requires:
