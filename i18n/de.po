@@ -1,0 +1,27 @@
+# 
+# DARCHE <madarche@nuxeo.com>, 2005.
+# 
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: CPSOOo-de CPS-3.2.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-11-15 15:30default\n"
+"PO-Revision-Date: 2005-03-15 23:30+0100\n"
+"Last-Translator: Georg Hennemann <georg.hennemann@dhl.com>\n"
+"Language-Team: de <rheinland@dzug.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;"
+
+msgid "portal_type_OOoDocbookDocument_title"
+msgstr "OpenOffice.org DocBook Dokument"
+
+msgid "portal_type_OOoDocbookDocument_description"
+msgstr ""
+"Dokument mit einer OpenOffice.org Datei zur Generierung einer DocBook Datei"
+
+msgid "action_xml_docbook_export"
+msgstr "Exportieren als DocBook XML"
+
