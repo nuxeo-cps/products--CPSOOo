@@ -9,6 +9,8 @@ Bug fixes:
 - Disabled CPSOOo if the elementtree module cannot be imported. This problem
   might have prevented some CPS servers to start when elementtree was not
   installed.
+- Removed some CPSOOo legacy code which was manipulating CPSTextWidget while
+  it's really not CPSOOo's business.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
