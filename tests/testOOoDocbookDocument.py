@@ -6,6 +6,7 @@ if __name__ == '__main__':
 
 import unittest
 import CPSOOoTestCase
+from difflib import unified_diff
 from os.path import join, abspath, dirname
 from zipfile import ZipFile
 from StringIO import StringIO
@@ -108,12 +109,17 @@ class TestOOoDocbookDocument(CPSOOoTestCase.CPSOOoTestCase):
                             "File %s is not present in output"
                             % fname)
 
+        # TODO: Generate a more readable output for the diff between the two
+        # files.
         for fname in out_archive_nameslist:
-            self.assertEqual(str(res_archive.read(fname)),
-                             str(out_archive.read(fname)),
+            res_content = str(res_archive.read(fname))
+            out_content = str(out_archive.read(fname))
+            self.assertEqual(res_content, out_content,
                              ("Input and output content "
-                              "does not match for file %s")
-                             % fname)
+                              "does not match for file %s: %s")
+                             % (fname,
+                                ''.join(unified_diff(res_content, out_content))
+                                ))
 
     def _createOOoDocbookDoc(self):
         self.ws.invokeFactory(type_name = self.doc_type,
