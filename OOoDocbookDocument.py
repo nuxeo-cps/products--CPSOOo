@@ -34,7 +34,7 @@ from Acquisition import aq_base, aq_parent, aq_inner
 from AccessControl import ClassSecurityInfo
 from OFS.Image import File
 
-from Products.CMFCore.CMFCorePermissions import View
+from Products.CMFCore.permissions import View
 from Products.CPSDocument.CPSDocument import CPSDocument
 
 from App.Common import rfc1123_date

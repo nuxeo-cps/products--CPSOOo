@@ -17,7 +17,7 @@ try:
 
     from Products.CMFCore.utils import ContentInit
     from Products.CMFCore.DirectoryView import registerDirectory
-    from Products.CMFCore.CMFCorePermissions import AddPortalContent
+    from Products.CMFCore.permissions import AddPortalContent
 
     from AccessControl import ModuleSecurityInfo
 

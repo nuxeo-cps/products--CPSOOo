@@ -48,7 +48,7 @@ from Products.DCWorkflow.Transitions import TRIGGER_USER_ACTION
 from Products.PythonScripts.PythonScript import PythonScript
 
 from Products.CPSInstaller.CPSInstaller import CPSInstaller
-from Products.CMFCore.CMFCorePermissions import \
+from Products.CMFCore.permissions import \
      View, ModifyPortalContent, ManageProperties
 WebDavLockItem = 'WebDAV Lock items'
 WebDavUnlockItem = 'WebDAV Unlock items'
