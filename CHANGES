@@ -3,7 +3,8 @@ Requires:
 -
 New features:
 ~~~~~~~~~~~~~
--
+- Made ooo docbook document type use the 'metadata' cluster instead of the
+  'metadata' layout.
 Bug fixes:
 ~~~~~~~~~~
 - Removed warnings: replaces CMFCore.CMFCorePermissions by CMFCore.permissions.

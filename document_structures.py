@@ -26,6 +26,7 @@ ooo_docbook_document_type = {
     #'cps_proxy_type': 'folder',
     'schemas': ['metadata', 'common', 'ooo_docbook_document'],
     'layouts': ['common', 'ooo_docbook_document'],
+    'layout_clusters': ['metadata:metadata'],
     'flexible_layouts': [],
     'storage_methods': [],
     #'cps_workspace_wf': 'workspace_structured_document_wf',
