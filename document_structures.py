@@ -31,21 +31,23 @@ ooo_docbook_document_type = {
     #'cps_workspace_wf': 'workspace_structured_document_wf',
     'cps_workspace_wf': 'workspace_content_wf',
     'cps_section_wf': 'section_content_wf',
-    'use_content_status_history': True,
-    'actions_add': ({'id': 'xml_docbook_export',
+    'use_content_status_history': 1,
+    'actions_add': ({'id': 'edit_online',
+                     'name': 'action_edit_online',
+                     'action': 'python:portal.getExternalEditorPath(object, "file", "file")',
+                     'condition': ('python:object is not None '
+                                   'and object.getContent().file is not None '
+                                   'and modules["Products.CPSSchemas.utils"].isProductPresent("Products.ExternalEditor")'),
+                     'permissions': ('Modify portal content',)
+                     },
+                    {'id': 'xml_docbook_export',
                      'name': 'action_xml_docbook_export',
                      'action': 'string:${object_url}/exportXmlDocbook',
                      'condition' : 'python:object.getContent().file',
                      'permissions': ('View',),
-                     'category' : 'object',
-                     'visible' : 1,
                      },
                     ),
     }
-
-
-
-
 
 def getDocumentTypes(portal=None):
     types = {}
@@ -102,7 +104,6 @@ ooo_docbook_document_schema = {
             },
         },
     }
-
 
 def getDocumentSchemas(portal=None):
     schemas = {}
@@ -166,8 +167,6 @@ ooo_docbook_document_layout = {
             ],
         },
     }
-
-
 
 def getDocumentLayouts(portal=None):
     layouts = {}
