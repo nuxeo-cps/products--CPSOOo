@@ -98,7 +98,8 @@ class TestOOoDocbookDocument(CPSOOoTestCase.CPSOOoTestCase):
 
         for fname in out_archive_nameslist:
             self.assertEqual(str(res_archive.read(fname)),
-                             str(out_archive.read(fname)))
+                             str(out_archive.read(fname)),
+                             'Input and output content does not match')
 
         self.assertEqual(len(out_archive.namelist()),
                          len(res_archive.namelist()))
