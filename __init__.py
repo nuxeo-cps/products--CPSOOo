@@ -23,11 +23,6 @@ try:
 
     import AllowModules
 
-    # Removing the 'stx' render format as it is not wanted
-    if 'stx' in CPSTextWidget.all_render_formats:
-        index = CPSTextWidget.all_render_formats.index('stx')
-        del CPSTextWidget.all_render_formats[index]
-
     ModuleSecurityInfo('copy').declarePublic('deepcopy')
 
     contentClasses = (
