@@ -1,4 +1,22 @@
 *******************************************
+** CPSOOo V0.0.5 [R1 build 2005/01/28-15:02 by madarche]
+
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Added dependencies information.
+- Updated TODO list.
+- Improved unit tests.
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSOOo V0.0.4 [R1 build 2004/12/13-09:14 by madarche]
 
 Requires:
