@@ -384,6 +384,7 @@ class OOoDocbookDocument(CPSDocument):
 
         # Regexp to replace "xxx.sxw" by "xxx.docb.xml"
         dbFileName = re.sub('\..+?$', '.docb.xml', self.file.title)
+        dbFileName = re.sub('\s', '_', dbFileName)
         dbFilePath = os.path.join(tmpDirPath, dbFileName)
         LOG(log_key, DEBUG, "DocBook file path = %s" % dbFilePath)
         filePaths.append(dbFilePath)
@@ -402,6 +403,7 @@ class OOoDocbookDocument(CPSDocument):
 
         # Regexp to replace "xxx.sxw" by "xxx.zip"
         archiveFileName = re.sub('\..+?$', '.zip', self.file.title)
+        archiveFileName = re.sub('\s', '_', archiveFileName)
         archiveFilePath = os.path.join(tmpDirPath, archiveFileName)
         LOG(log_key, DEBUG, "Archive file path = %s" % archiveFilePath)
         # Create a ZipFile object to write into
