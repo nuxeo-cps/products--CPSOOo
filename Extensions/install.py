@@ -38,7 +38,7 @@ from Products.CPSOOo.Field import CPSOOoDocbookFileField
 from Products.CPSOOo.document_structures import \
     getDocumentTypes, getDocumentSchemas, getDocumentLayouts
 
-from Products.CPSCore.CPSWorkflow import \
+from Products.CPSWorkflow.transitions import \
      TRANSITION_BEHAVIOR_FREEZE, TRANSITION_INITIAL_CREATE, \
      TRANSITION_ALLOWSUB_DELETE, TRANSITION_ALLOWSUB_MOVE, \
      TRANSITION_ALLOWSUB_COPY
