@@ -36,6 +36,7 @@ from Products.CPSSchemas.FileUtils import convertFileToText
 
 class CPSOOoDocbookFileField(CPSField):
     """File field."""
+    log_key = 'CPSOOoDocbookFileField'
     meta_type = "CPS OpenOffice.org Docbook Field"
 
     default_expr = 'nothing'
@@ -86,7 +87,7 @@ class CPSOOoDocbookFileField(CPSField):
             xml_conversion = convertFileToDocbook(file, context=context)
             if xml_conversion is not None:
                 xml_string = xml_conversion.getData()
-                LOG('CPSOooDocBookFileField', DEBUG, "xml_string = %s..." % xml_string[:1000])
+                LOG('log_key', DEBUG, "xml_string = %s..." % xml_string[:1000])
                 fileid = cookId('', '', file)[0]
                 if '.' in fileid:
                     fileid = fileid[:fileid.rfind('.')]
@@ -102,7 +103,7 @@ class CPSOOoDocbookFileField(CPSField):
                 files_dict = {}
                 for k, v in subobjects_dict.items():
                     files_dict[k] = File(k, k, v)
-                LOG('BasicFields', DEBUG, "files_dict = %s" % `files_dict`)
+                LOG('log_key', DEBUG, "files_dict = %s" % `files_dict`)
             else:
                 xml_file = None
                 files_dict = {}
@@ -117,7 +118,7 @@ class CPSOOoDocbookFileField(CPSField):
                                                 subobjects=data[xml_subfiles_field_id])
             if html_conversion is not None:
                 html_string = html_conversion.getData()
-                LOG('CPSOooDocBookFileField', DEBUG, "html_string = %s..." % html_string[:1000])
+                LOG('log_key', DEBUG, "html_string = %s..." % html_string[:1000])
                 fileid = cookId('', '', xml_file)[0]
                 if '.' in fileid:
                     fileid = fileid[:fileid.rfind('.')]
@@ -133,7 +134,7 @@ class CPSOOoDocbookFileField(CPSField):
                 files_dict = {}
                 for k, v in subobjects_dict.items():
                     files_dict[k] = File(k, k, v)
-                LOG('BasicFields', DEBUG, "files_dict = %s" % `files_dict`)
+                LOG('log_key', DEBUG, "files_dict = %s" % `files_dict`)
             else:
                 html_file = None
                 files_dict = {}
