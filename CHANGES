@@ -6,7 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- Removed code that shouldn't be in the CPSOOo installer.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -

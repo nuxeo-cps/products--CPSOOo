@@ -65,10 +65,6 @@ class ClientInstaller(CPSInstaller):
         """Converting a CPS Default Site to a client site"""
         self.log("Starting %s installation" % self.product_name)
 
-        # The product skins have to be set up AFTER the cpsdefault_installer
-        # is run, because the product skins override the cpsdefault skins.
-        #self.setupCps()
-
         self.log("Installing layers and configure Basic skin")
         self.verifySkins(LAYERS)
 
@@ -99,55 +95,9 @@ class ClientInstaller(CPSInstaller):
         self.verifyLocalWorkflowChains(self.portal['sections'],
                                        se_chains)
 
-        self.setupNeededProducts()
         self.setupTranslations()
 
         self.log("Ending %s installation" % self.product_name)
-
-    def setupCps(self):
-        # Calling the CPS installer
-        self.log("")
-        self.log("### CPS update")
-        self.log(self.portal.cpsupdate())
-        self.log("### End of CPS update")
-
-    def setupNeededProducts(self):
-        self.log("%s.setupNeededProducts()" % self.product_name)
-        self.log("### CPSSubscriptions setup ###")
-        try:
-            import Products.CPSSubscriptions
-            methodName = 'cpssubscriptions_install'
-            if not self.portalHas(methodName):
-                self.log('Adding CPSSubscriptions installer')
-                from Products.ExternalMethod.ExternalMethod import ExternalMethod
-                method = ExternalMethod(methodName,
-                                        'CPSSubscriptions install',
-                                        'CPSSubscriptions.install',
-                                        'install')
-                self.portal._setObject(methodName, method)
-            self.log(self.portal.cpssubscriptions_install())
-        except ImportError:
-            self.log("Could not import CPSSubscriptions")
-            pass
-        self.log("### End of CPSSubscriptions setup ###")
-        self.log("### CPSNavigation setup ###")
-        try:
-            import Products.CPSNavigation
-            methodName = 'cpsnavigation_install'
-            if not self.portalHas(methodName):
-                self.log('Adding CPSNavigation installer')
-                from Products.ExternalMethod.ExternalMethod import ExternalMethod
-                method = ExternalMethod(methodName,
-                                        'CPSNavigation install',
-                                        'CPSNavigation.install',
-                                        'install')
-                self.portal._setObject(methodName, method)
-            self.log(self.portal.cpsnavigation_install())
-        except ImportError:
-            self.log("Could not import CPSNavigation")
-            pass
-        self.log("### End of CPSNavigation setup ###")
-        self.log("")
 
 
 def install(self):
