@@ -1,7 +1,5 @@
 TODO (Most important items are listed first)
 
-- Implement unit tests.
-
 - Get rid of ElementTree and only use minidom parsing, because ElementTree
   serialization even if valid causes problems to XSLT processors like xsltproc.
 
