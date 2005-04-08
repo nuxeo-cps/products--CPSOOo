@@ -17,12 +17,9 @@
 # $Id$
 
 from zLOG import LOG, DEBUG, WARNING
-import sys
-from types import IntType, StringType, ListType, FloatType, LongType
 from Globals import InitializeClass
-from DateTime.DateTime import DateTime
 
-from OFS.Image import cookId, File, Image
+from OFS.Image import cookId, File
 
 from Products.CMFCore.Expression import Expression
 
