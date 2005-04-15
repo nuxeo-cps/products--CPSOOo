@@ -1,5 +1,8 @@
 # -*- coding: ISO-8859-15 -*-
-# (C) Copyright 2003 Nuxeo SARL <http://nuxeo.com>
+# (C) Copyright 2004-2005 Nuxeo SARL <http://nuxeo.com>
+# Authors:
+# M.-A. Darche (Nuxeo)
+# Ruslan Spivak (Nuxeo)
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2 as published
