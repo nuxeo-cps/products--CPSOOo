@@ -24,7 +24,7 @@ msgstr "OpenOffice.org DocBook Document"
 
 msgid "portal_type_OOoDocbookDocument_description"
 msgstr ""
-"Document contenaining an OpenOffice.org file used to generate a DocBook file"
+"Document containing an OpenOffice.org file used to generate a DocBook file"
 
 msgid "action_xml_docbook_export"
 msgstr "Export DocBook XML"
