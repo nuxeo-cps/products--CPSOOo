@@ -22,17 +22,12 @@
 
 log_key = 'CPSOOo.__init__'
 
-from zLOG import LOG, \
-     TRACE, DEBUG, BLATHER, INFO, PROBLEM, WARNING, ERROR, PANIC
-
 from Products.CMFCore.DirectoryView import registerDirectory
-
-from Products.CPSSchemas.ExtendedWidgets import CPSTextWidget
-
 from Products.CMFCore.utils import ContentInit
 from Products.CMFCore.permissions import AddPortalContent
-
 from AccessControl import ModuleSecurityInfo
+from zLOG import LOG, \
+     TRACE, DEBUG, BLATHER, INFO, PROBLEM, WARNING, ERROR, PANIC
 
 ModuleSecurityInfo('copy').declarePublic('deepcopy')
 
