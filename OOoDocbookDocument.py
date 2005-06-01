@@ -375,8 +375,8 @@ class OOoDocbookDocument(CPSDocument):
 
     security = ClassSecurityInfo()
 
-    top_element_name = 'article'
-    #top_element_name = 'book'
+    #top_element_name = 'article'
+    top_element_name = 'book'
     metainfo_element_name = top_element_name + 'info'
 
     security.declareProtected(View, 'exportXmlDocbook')
@@ -414,7 +414,7 @@ class OOoDocbookDocument(CPSDocument):
         archiveFilePath = os.path.join(tmpDirPath, archiveFileName)
         LOG(log_key, DEBUG, "Archive file path = %s" % archiveFilePath)
         # Create a ZipFile object to write into
-        archiveFile = ZipFile(archiveFilePath, 'w')
+        archiveFile = ZipFile(archiveFilePath, 'w', ZIP_DEFLATED)
         archiveInternalSubDirName = dbFileName.split('.')[0]
         for filePath in filePaths:
             LOG(log_key, DEBUG, "adding file to archive = %s" % filePath)
@@ -493,7 +493,6 @@ class OOoDocbookDocument(CPSDocument):
             LOG(log_key, PROBLEM,
                 "_updateMetadataFromDocument no file_xml_string -> no update")
             return
-
         doc = ElementTree(XML(file_xml_string))
         rootElt = doc.getroot()
         metainfoElt = xpath_find(rootElt, self.metainfo_element_name)
