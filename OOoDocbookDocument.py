@@ -433,7 +433,6 @@ class OOoDocbookDocument(CPSDocument):
         dbFile.close()
 
         archiveFile = open(archiveFilePath, 'r')
-        archiveFile.flush()
         out = archiveFile.read()
         archiveFile.close()
 
