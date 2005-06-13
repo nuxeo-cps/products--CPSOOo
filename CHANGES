@@ -6,7 +6,8 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- Commented out all the needless debug messages that were really slowing down
+  the application.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
