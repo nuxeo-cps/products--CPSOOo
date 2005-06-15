@@ -8,6 +8,7 @@ Bug fixes:
 ~~~~~~~~~~
 - Commented out all the needless debug messages that were really slowing down
   the application.
+- Taking advantage of the new centralized CPSI18n.tests.translations module.
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 -
