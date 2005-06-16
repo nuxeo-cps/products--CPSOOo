@@ -31,6 +31,9 @@ from zLOG import LOG, \
 
 ModuleSecurityInfo('copy').declarePublic('deepcopy')
 
+# Register field classes
+import Field
+
 
 fti = ()
 
