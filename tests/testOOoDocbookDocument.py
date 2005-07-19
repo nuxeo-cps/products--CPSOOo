@@ -65,7 +65,7 @@ class TestOOoDocbookDocument(CPSOOoTestCase.CPSOOoTestCase):
     def testRemoveOOoDocbookDocument(self):
         """Test removal of OOoDocbookDocument instance in root of workspaces.
         """
-        doc = self._createOOoDocbookDoc()
+        proxy, doc = self._createOOoDocbookDoc()
         self.assertEqual(len([o for o in self.ws.contentValues()
                               if o.getContent().meta_type == self.doc_type]), 1)
         self.ws._delObject(self.doc_id)
@@ -75,12 +75,12 @@ class TestOOoDocbookDocument(CPSOOoTestCase.CPSOOoTestCase):
 
 
     def testEditOOoDocbookDocument(self):
-        doc = self._createOOoDocbookDoc()
+        proxy, doc = self._createOOoDocbookDoc()
         props = {
             'Title' : 'The title',
             'Description' : 'The description',
             }
-        doc.edit(**props)
+        doc.edit(proxy=proxy, **props)
 
         for prop in props.keys():
             value = getattr(doc, prop.lower())
@@ -92,15 +92,15 @@ class TestOOoDocbookDocument(CPSOOoTestCase.CPSOOoTestCase):
             'Description' : 'The description',
             'file' : self.file,
             }
-        doc.edit(**props)
+        doc.edit(proxy=proxy, **props)
         self.assertEqual(str(getattr(doc, 'file')), str(self.file))
         self.assertEqual(doc.title, "Dix raisons d'utiliser OpenOffice.org")
         self.failIf(doc.description == props['Description'])
 
 
     def testExportXmlDocbook(self):
-        doc = self._createOOoDocbookDoc()
-        doc.edit(file=self.file)
+        proxy, doc = self._createOOoDocbookDoc()
+        doc.edit(proxy=proxy, file=self.file)
         out = doc.exportXmlDocbook()
 
         resp = self.app.REQUEST.RESPONSE
@@ -143,7 +143,8 @@ class TestOOoDocbookDocument(CPSOOoTestCase.CPSOOoTestCase):
     def _createOOoDocbookDoc(self):
         self.ws.invokeFactory(type_name = self.doc_type,
                               id = self.doc_id)
-        return getattr(self.ws, self.doc_id).getContent()
+        proxy = getattr(self.ws, self.doc_id)
+        return proxy, proxy.getEditableContent()
 
 def test_suite():
     suite = unittest.TestSuite()
