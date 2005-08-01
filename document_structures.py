@@ -163,7 +163,6 @@ ooo_docbook_document_layout = {
             [{'widget_id': 'Source'},
              {'widget_id': 'Rights'},],
             [{'widget_id': 'file'}, ],
-            [{'widget_id': 'archive_revision'}, ],
             ],
         },
     }
