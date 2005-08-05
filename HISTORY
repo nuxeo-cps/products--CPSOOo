@@ -1,4 +1,25 @@
 *******************************************
+** CPSOOo V0.2.0 [R1 build 2005/08/05-15:38 by fguillaume]
+** SVN URL: https://svn.nuxeo.org/pub/CPSOOo/trunk Revision: 25553
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+- Added the pt_PT translation.
+Bug fixes:
+~~~~~~~~~~
+- Commented out all the needless debug messages that were really slowing down
+  the application.
+- Taking advantage of the new centralized CPSI18n.tests.translations module.
+- Fixed translation files through the CPSI18n/bin/fix_pos script.
+- The ooo_docbook_document layout refered to the inexistant widget
+  archive_revision
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSOOo V0.1.1 [R1 build 2005/06/02-09:33 by fguillaume]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSOOo/trunk Revision: 22058
 Requires:
