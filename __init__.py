@@ -39,7 +39,10 @@ fti = ()
 
 imports_ok = True
 try:
-    from elementtree.ElementTree import ElementTree
+    try:
+        from elementtree.ElementTree import ElementTree
+    except ImportError:
+        from lxml.etree import ElementTree
     from Products.CPSOOo.OOoDocbookDocument import \
          OOoDocbookDocument, addOOoDocbookDocumentInstance
 

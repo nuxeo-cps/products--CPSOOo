@@ -42,9 +42,16 @@ from Products.CPSDocument.CPSDocument import CPSDocument
 
 from App.Common import rfc1123_date
 
-from elementtree.ElementTree import XML, ElementTree
-from elementtree.ElementPath import findall as xpath_findall
-from elementtree.ElementPath import find as xpath_find
+# lxml should provide ElementTree API in case ElementTree is not installed
+# TODO: after dust has settled, remove dependence on ElementTree completely
+try:
+    from elementtree.ElementTree import XML, ElementTree
+    from elementtree.ElementPath import findall as xpath_findall
+    from elementtree.ElementPath import find as xpath_find
+except ImportError:
+    from lxml.etree import XML, ElementTree
+    from lxml._elementpath import findall as xpath_findall
+    from lxml._elementpath import find as xpath_find
 
 from zLOG import LOG, \
      TRACE, DEBUG, BLATHER, INFO, PROBLEM, WARNING, ERROR, PANIC
