@@ -387,7 +387,7 @@ class OOoDocbookDocument(CPSDocument):
     metainfo_element_name = top_element_name + 'info'
 
     security.declareProtected(View, 'exportXmlDocbook')
-    def exportXmlDocbook(self, REQUEST=None, **kw):
+    def exportXmlDocbook(self):
         """Export XML, in the Docbook XML format, for this document.
         """
         tmpDirName = tempfile.mktemp()
@@ -445,15 +445,16 @@ class OOoDocbookDocument(CPSDocument):
 
         shutil.rmtree(tmpDirPath)
 
-        resp = self.REQUEST.RESPONSE
-        resp.setHeader('Content-Type', 'application/zip')
-        resp.setHeader('Content-Disposition', 'filename=' + archiveFileName)
-        # The "no-cache" headers hit a bug when using MSIE on SSL so we need to use the
-        # approach of using the Last-Modified header.
-        # http://support.microsoft.com/default.aspx?scid=http://support.microsoft.com:80/support/kb/articles/q316/4/31.asp&NoWebContent=1&NoWebContent=&NoWebContent=1
-        #resp.setHeader('Pragma', 'no-cache')
-        #resp.setHeader('Cache-Control', 'no-cache')
-        resp.setHeader('Last-Modified', rfc1123_date())
+        if self.REQUEST:
+            resp = self.REQUEST.RESPONSE
+            resp.setHeader('Content-Type', 'application/zip')
+            resp.setHeader('Content-Disposition', 'filename=' + archiveFileName)
+            # The "no-cache" headers hit a bug when using MSIE on SSL so we
+            # need to use the approach of using the Last-Modified header.
+            # http://support.microsoft.com/default.aspx?scid=http://support.microsoft.com:80/support/kb/articles/q316/4/31.asp&NoWebContent=1&NoWebContent=&NoWebContent=1
+            #resp.setHeader('Pragma', 'no-cache')
+            #resp.setHeader('Cache-Control', 'no-cache')
+            resp.setHeader('Last-Modified', rfc1123_date())
 
         return out
 
@@ -722,8 +723,8 @@ def addOOoDocbookDocumentInstance(container, id, REQUEST=None, **kw):
     container._setObject(id, instance)
 
     # It's mandatory then after to get the object through its parent, for the
-    # object to have a reference on its parent. Having the object know about its
-    # parent is mandatory if one wants to be able to call some methods like
+    # object to have a reference on its parent. Having the object know about
+    # its parent is mandatory if one wants to be able to call some methods like
     # manage_addProduct() on it.
     #object = getattr(container, id)
 
