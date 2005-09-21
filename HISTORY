@@ -1,4 +1,21 @@
 *******************************************
+** CPSOOo V0.3.0 [R1 build 2005/09/21-15:20 by fguillaume]
+** SVN URL: https://svn.nuxeo.org/pub/CPSOOo/trunk Revision: 27374
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+-
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Use lxml if ElementTree is not installed.
+
+
+*******************************************
 ** CPSOOo V0.2.0 [R1 build 2005/08/05-15:38 by fguillaume]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSOOo/trunk Revision: 25553
 Requires:
