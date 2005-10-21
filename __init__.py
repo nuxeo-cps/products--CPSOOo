@@ -31,31 +31,33 @@ from zLOG import LOG, \
 
 ModuleSecurityInfo('copy').declarePublic('deepcopy')
 
-# Register field classes
-import Field
-
-
-fti = ()
-
 imports_ok = True
 try:
+    # Trying all the not usual imports on which CPSOOo relies
+    import xml.dom.minidom
+    import xml.dom.ext
     try:
         from elementtree.ElementTree import ElementTree
     except ImportError:
         from lxml.etree import ElementTree
+
+except ImportError, err:
+    LOG(log_key, PROBLEM,
+        "CPSOOo cannot be loaded because there are some dependencies missing: "
+        "%s" % str(err))
+    imports_ok = False
+
+if imports_ok:
+    import Field
     from Products.CPSOOo.OOoDocbookDocument import \
          OOoDocbookDocument, addOOoDocbookDocumentInstance
 
+    fti = ()
     contentClasses = (OOoDocbookDocument,)
     contentConstructors = (addOOoDocbookDocumentInstance,)
 
-except ImportError:
-    LOG(log_key, PROBLEM,
-        "CPSOOo cannot be loaded because the elementtree module is missing")
-    imports_ok = False
+    registerDirectory('skins', globals())
 
-registerDirectory('skins', globals())
-if imports_ok:
     def initialize(registrar):
         ContentInit('CPSOOo Types',
                     content_types=contentClasses,
