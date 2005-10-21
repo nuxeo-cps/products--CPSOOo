@@ -128,17 +128,14 @@ class TestOOoDocbookDocument(CPSOOoTestCase.CPSOOoTestCase):
                             "File %s is not present in output"
                             % fname)
 
-        # TODO: Generate a more readable output for the diff between the two
-        # files.
         for fname in out_archive_nameslist:
             res_content = str(res_archive.read(fname))
             out_content = str(out_archive.read(fname))
-            self.assertEqual(res_content, out_content,
-                             ("Input and output content "
-                              "does not match for file %s: %s")
-                             % (fname,
-                                ''.join(unified_diff(res_content, out_content))
-                                ))
+            diff = unified_diff(res_content.split('\n'),
+                                out_content.split('\n'))
+            msg = "Input and output content does not match for file %s: %s"%(
+                fname, '\n'.join(diff))
+            self.assertEqual(res_content, out_content, msg)
 
     def _createOOoDocbookDoc(self):
         self.ws.invokeFactory(type_name = self.doc_type,
