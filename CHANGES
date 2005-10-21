@@ -11,3 +11,5 @@ Bug fixes:
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - Generate a more readable output for xml files comparison in tests
+- Switched the unit tests to using ooo2dbk 1.4.3 instead of version 1.4.1
+  (changed the ZIP file).
