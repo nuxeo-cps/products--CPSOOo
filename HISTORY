@@ -1,4 +1,23 @@
 *******************************************
+** CPSOOo V0.4.0 [R1 build 2005/11/07-15:22 by fguillaume]
+** SVN URL: https://svn.nuxeo.org/pub/CPSOOo/trunk Revision: 29058
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Made CPSOOo installation in cpsinstall.py not hide the import error by
+  displaying the exact import error message. This partly fixes #1037.
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Generate a more readable output for xml files comparison in tests
+- Switched the unit tests to using ooo2dbk 1.4.3 instead of version 1.4.1
+  (changed the ZIP file).
+
+*******************************************
 ** CPSOOo V0.3.0 [R1 build 2005/09/21-15:20 by fguillaume]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSOOo/trunk Revision: 27374
 Requires:
