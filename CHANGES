@@ -6,7 +6,7 @@ New features:
 -
 Bug fixes:
 ~~~~~~~~~~
--
+- Fixes to work correctly on win32. This is step forward to fix #708
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - Switched to new stable version of ooo2dbk which includes many small bugfixes.

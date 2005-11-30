@@ -411,9 +411,9 @@ class OOoDocbookDocument(CPSDocument):
             imageFilePath = os.path.join(tmpDirPath, imageFileName)
 ##             LOG(log_key, DEBUG, "Image file path = %s" % imageFilePath)
             filePaths.append(imageFilePath)
-            imageFile = open(imageFilePath, 'w+c')
+            imageFile = open(imageFilePath, 'wb')
             imageFile.write(str(getattr(self, imageFileName)))
-            imageFile.flush()
+            imageFile.close()
 
         # Regexp to replace "xxx.sxw" by "xxx.zip"
         archiveFileName = re.sub('\..+?$', '.zip', self.file.title)
@@ -439,7 +439,7 @@ class OOoDocbookDocument(CPSDocument):
         archiveFile.close()
         dbFile.close()
 
-        archiveFile = open(archiveFilePath, 'r')
+        archiveFile = open(archiveFilePath, 'rb')
         out = archiveFile.read()
         archiveFile.close()
 
