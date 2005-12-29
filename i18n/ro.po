@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ro\n"
-"POT-Creation-Date: 2004-11-15 15:30default\n"
+"POT-Creation-Date: 2005-12-29 16:21default\n"
 "PO-Revision-Date: 2005-04-04 12:29+0300\n"
 "Last-Translator: \n"
 "Language-Team:  <en@li.org>\n"
@@ -29,9 +29,8 @@ msgstr "Document OpenOffice.org DocBook"
 
 msgid "portal_type_OOoDocbookDocument_description"
 msgstr ""
-"Document continand un fisier OpenOffice.org folosit la generarea "
-"fisierului DocBook"
+"Document continand un fisier OpenOffice.org folosit la generarea fisierului "
+"DocBook"
 
 msgid "action_xml_docbook_export"
 msgstr "Exporta DocBook XML"
-
