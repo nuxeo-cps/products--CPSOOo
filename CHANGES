@@ -10,3 +10,4 @@ Bug fixes:
 New internal features:
 ~~~~~~~~~~~~~~~~~~~~~~
 - Switched to new stable version of ooo2dbk which includes many small bugfixes.
+- Added extension profile

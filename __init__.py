@@ -28,6 +28,11 @@ from Products.CMFCore.permissions import AddPortalContent
 from AccessControl import ModuleSecurityInfo
 from zLOG import LOG, \
      TRACE, DEBUG, BLATHER, INFO, PROBLEM, WARNING, ERROR, PANIC
+from Products.GenericSetup import profile_registry
+from Products.GenericSetup import EXTENSION
+
+from Products.CPSDefault.interfaces import ICPSSite
+
 
 ModuleSecurityInfo('copy').declarePublic('deepcopy')
 
@@ -65,3 +70,11 @@ if imports_ok:
                     extra_constructors=contentConstructors,
                     fti=fti,
                     ).initialize(registrar)
+    profile_registry.registerProfile(
+        'default',
+        'CPSOOo',
+        "CPSOOo product for CPS.",
+        'profiles/default',
+        'CPSOOo',
+        EXTENSION,
+        for_=ICPSSite)
