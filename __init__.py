@@ -72,7 +72,7 @@ if imports_ok:
                     ).initialize(registrar)
     profile_registry.registerProfile(
         'default',
-        'CPSOOo',
+        'CPS OOo',
         "CPSOOo product for CPS.",
         'profiles/default',
         'CPSOOo',
