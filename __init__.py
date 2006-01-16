@@ -31,7 +31,7 @@ from zLOG import LOG, \
 from Products.GenericSetup import profile_registry
 from Products.GenericSetup import EXTENSION
 
-from Products.CPSDefault.interfaces import ICPSSite
+from Products.CPSCore.interfaces import ICPSSite
 
 
 ModuleSecurityInfo('copy').declarePublic('deepcopy')
