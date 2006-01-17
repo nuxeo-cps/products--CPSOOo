@@ -1,7 +1,5 @@
-# (C) Copyright 2004-2005 Nuxeo SARL <http://nuxeo.com>
-# Authors:
-# Ruslan Spivak (Nuxeo)
-# M.-A. Darche (Nuxeo)
+# (C) Copyright 2006 Nuxeo SAS <http://nuxeo.com>
+# Author: Florent Guillaume <fg@nuxeo.com>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License version 2 as published
@@ -19,11 +17,15 @@
 #
 # $Id$
 
-from Testing import ZopeTestCase
-from Products.CPSDefault.tests import CPSTestCase
+from Products.CPSDefault.tests.CPSTestCase import CPSTestCase
+from Products.CPSDefault.tests.CPSTestCase import ExtensionProfileLayerClass
 
-ZopeTestCase.installProduct('CPSOOo')
 
-CPSTestCase.setupPortal()
+class LayerClass(ExtensionProfileLayerClass):
+    extension_ids = ('CPSOOo:default',)
 
-CPSOOoTestCase = CPSTestCase.CPSTestCase
+CPSOOoLayer = LayerClass(__name__, 'CPSOOoLayer')
+
+
+class CPSOOoTestCase(CPSTestCase):
+    layer = CPSOOoLayer
