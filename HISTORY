@@ -1,4 +1,21 @@
 *******************************************
+** CPSOOo V0.5.0 [R1 build 2006/01/23-17:29 by fermigier]
+** SVN URL: https://svn.nuxeo.org/pub/CPSOOo/trunk Revision: 31976
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Fixes to work correctly on win32. This is step forward to fix #708
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Switched to new stable version of ooo2dbk which includes many small bugfixes.
+- Added extension profile
+
+*******************************************
 ** CPSOOo V0.4.0 [R1 build 2005/11/07-15:22 by fguillaume]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSOOo/trunk Revision: 29058
 Requires:
