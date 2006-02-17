@@ -1,4 +1,20 @@
 *******************************************
+** CPSOOo V0.6.0 [R1 build 2006/02/17-20:22 by fermigier]
+** SVN URL: https://svn.nuxeo.org/pub/CPSOOo/trunk Revision: 33030
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+-
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Move to GenericSetup.
+
+*******************************************
 ** CPSOOo V0.5.0 [R1 build 2006/01/23-17:29 by fermigier]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSOOo/trunk Revision: 31976
 Requires:
