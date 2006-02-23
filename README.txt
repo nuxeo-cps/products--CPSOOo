@@ -75,7 +75,7 @@ If there are some mime-types missing, you should delete and then reinstall the
 - With CPS version < 3.4.0 : reinstalling can be done through the External
   Method `portal_transforms_installer` (located at the root of the CPSinstance) by
   selecting the "Test" tab.
- 
+
 Check transforms presence
 -------------------------
 
@@ -94,7 +94,7 @@ If there are some transforms missing, you should delete and then reinstall the
   selecting the "Test" tab.
 
 If some transforms still don't show up in the portal_transforms tool it means
-that they cannot be found or executed by the tool. So examine each transform to 
+that they cannot be found or executed by the tool. So examine each transform to
 find out the binary on which they might depend. This is the variable
 `binaryName` in the Python code of each transform.
 
