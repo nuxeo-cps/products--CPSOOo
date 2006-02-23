@@ -1,6 +1,7 @@
 # $Id$
 
 # CPS --------------------
+PortalTransforms >= 1.6.0
 CPSUtil >= 0.2.0
 
 #  * PyXML
@@ -13,3 +14,18 @@ CPSUtil >= 0.2.0
 #    Python installation itself or by installing PyXML.
 #
 #    CPSOOo has been tested with elementtree-1.2-20040618.
+#
+#  * lxml
+#    http://codespeak.net/lxml/
+#
+#    lxml can be used instead of elementtree.
+#
+#  * xsltproc
+#    It is used by the PortalTransforms transforms
+#
+#  * ooo2dbk
+#    http://svn.nuxeo.org/trac/pub/browser/ooo2dbk/
+#
+#    ooo2dbk is bundled with PortalTransforms, so you don't have to install it
+#    yourself. This info is given here just for completeness sake.
+
