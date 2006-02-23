@@ -54,15 +54,77 @@ read this file since missing dependencies are a usual cause of errors.
 Problems might lie in one of the transforms ooo_to_docbook, docbook_to_html, or
 both.
 
+Check mime-types presence
+-------------------------
+
+Check that both of the following mime-types are available in the
+`mimetypes_registry` (located at the root of your CPS instance):
+
+- `application/vnd.sun.xml.writer`
+- `application/docbook+xml`
+- `text/html`
+- `text/plain`
+
+If there are some mime-types missing, you should delete and then reinstall the
+`mimetypes_registry`:
+
+- With CPS >= 3.4.0 : reinstalling can be done through the `portal_setup` tool
+  (located at the root of your CPS instance) by importing the `Required tools`
+  import step from the "Import" tab.
+
+- With CPS version < 3.4.0 : reinstalling can be done through the External
+  Method `portal_transforms_installer` (located at the root of the CPSinstance) by
+  selecting the "Test" tab.
+ 
 Check transforms presence
 -------------------------
 
-Check that both of those transforms are available in the portal_transforms tool
-at the root of your CPS instance. If there are some missing you should reinstall
-the portal_transforms tool. With CPS version < 3.4.0 you can do this through the
-External Method "portal_transforms_installer" located at the root of the CPS
-instance. With CPS >= 3.4.0 : TODO
- 
+Check that both `ooo_to_docbook` and `docbook_to_html` transforms are available
+in the `portal_transforms` tool (located at the root of your CPS instance).
+
+If there are some transforms missing, you should delete and then reinstall the
+`portal_transforms` tool:
+
+- With CPS >= 3.4.0 : reinstalling can be done through the `portal_setup` tool
+  (located at the root of your CPS instance) by importing the `Required tools`
+  import step from the "Import" tab.
+
+- With CPS version < 3.4.0 : reinstalling can be done through the External
+  Method `portal_transforms_installer` (located at the root of the CPSinstance) by
+  selecting the "Test" tab.
+
+If some transforms still don't show up in the portal_transforms tool it means
+that they cannot be found or executed by the tool. So examine each transform to 
+find out the binary on which they might depend. This is the variable
+`binaryName` in the Python code of each transform.
+
+Typical problems
+~~~~~~~~~~~~~~~~
+
+- ooo2dbk has not the right permissions:
+
+  Solution::
+
+  $ chmod a+x /usr/local/zope/instance/cps1/Products/PortalTransforms/transforms/ooo2dbk/ooo2dbk
+
+- xsltproc is not in the classical `PATH`
+  `/usr/local/bin:/usr/bin:/bin`:
+
+  Diagnostic::
+
+    $ which xsltproc
+    /usr/local/webhosting/libxslt-1.1.15/bin/xsltproc
+
+  Solution:
+
+  Create a link from `/usr/local/bin/xsltproc` to
+  `/usr/local/webhosting/libxslt-1.1.15/bin/xsltproc`
+  or (not recommended) edit
+  /usr/local/zope/instance/cps1/Products/PortalTransforms/libtransforms/utils.py
+  and in this file modify the variable `bin_search_path` so that it includes,
+  for example, the path `/usr/local/webhosting/libxslt-1.1.15/bin`.
+
+
 Check transforms transformation logs
 ------------------------------------
 
