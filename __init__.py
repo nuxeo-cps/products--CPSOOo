@@ -45,7 +45,6 @@ try:
         from elementtree.ElementTree import ElementTree
     except ImportError:
         from lxml.etree import ElementTree
-
 except ImportError, err:
     LOG(log_key, PROBLEM,
         "CPSOOo cannot be loaded because there are some dependencies missing: "
