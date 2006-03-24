@@ -54,6 +54,23 @@ read this file since missing dependencies are a usual cause of errors.
 Problems might lie in one of the transforms ooo_to_docbook, docbook_to_html, or
 both.
 
+Some dependencies related problems have the following symptoms:
+
+- PyXML dependency missing:
+
+  - In Zope logs at startup or when lauching tests: "CPSOOo cannot be loaded
+    because there are some dependencies missing: No module named ext"
+  - When lauching tests: "ImportError: No module named ext"
+
+- Other errors that may be consequences of missing dependencies (PyXML is
+  one of them)
+
+  - When lauching tests: "KeyError: 'CPSOOo:default'"
+  - When lauching the CPSOOo installer (the old one, using CPSInstaller and
+    CMFQuickInstallerTool if present), in tests or for real: "ValueError:
+    Not a registered directory: CPSOOo/skins/cpsooo"
+
+
 Check mime-types presence
 -------------------------
 
