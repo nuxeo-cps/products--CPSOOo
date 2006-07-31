@@ -1,4 +1,20 @@
 *******************************************
+** CPSOOo V0.6.2 [R1 build 2006/07/31-12:09 by fermigier]
+** SVN URL: https://svn.nuxeo.org/pub/CPS3/products/CPSOOo/trunk Revision: 47588
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+- #1702: Added new Catalan translation thanks to Santi Camps.
+Bug fixes:
+~~~~~~~~~~
+-
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+-
+
+*******************************************
 ** CPSOOo V0.6.1 [R1 build 2006/03/03-17:29 by ben]
 ** SVN URL: https://svn.nuxeo.org/pub/CPSOOo/trunk Revision: 33855
 Requires:
