@@ -26,8 +26,6 @@ from OFS.Image import cookId, File
 
 from Products.CMFCore.Expression import Expression
 
-from Products.CPSCore.utils import _isinstance
-
 from Products.CPSSchemas.Field import CPSField, FieldRegistry
 from Products.CPSSchemas.Field import ValidationError
 from Products.CPSSchemas.FileUtils import convertFileToHtml
@@ -149,7 +147,7 @@ class CPSOOoDocbookFileField(CPSField):
     def validate(self, value):
         if not value:
             return None
-        if _isinstance(value, File):
+        if isinstance(value, File):
             return value
         raise ValidationError('Not a file: %s' % repr(value))
 
