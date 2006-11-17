@@ -24,7 +24,7 @@ msgstr "Document OpenOffice.org DocBook"
 
 msgid "portal_type_OOoDocbookDocument_description"
 msgstr ""
-"Document contenant un fichier OpenOffice.org servant à la génération de "
+"Un document contenant un fichier OpenOffice.org servant à la génération d'un "
 "fichier DocBook"
 
 msgid "action_xml_docbook_export"
