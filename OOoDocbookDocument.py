@@ -400,7 +400,7 @@ class OOoDocbookDocument(CPSDocument):
         dbFileName = re.sub('\..+?$', '.docb.xml', self.file.title)
         dbFileName = re.sub('\s', '_', dbFileName)
         dbFilePath = os.path.join(tmpDirPath, dbFileName)
-##         LOG(log_key, DEBUG, "DocBook file path = %s" % dbFilePath)
+        LOG(log_key, DEBUG, "DocBook file path = %s" % dbFilePath)
         filePaths.append(dbFilePath)
         dbFile = open(dbFilePath, 'w+c')
         dbFile.write(str(self.file_xml))
@@ -409,7 +409,7 @@ class OOoDocbookDocument(CPSDocument):
         imageFileNames = self.file_xml_subfiles
         for imageFileName in imageFileNames:
             imageFilePath = os.path.join(tmpDirPath, imageFileName)
-##             LOG(log_key, DEBUG, "Image file path = %s" % imageFilePath)
+            LOG(log_key, DEBUG, "Image file path = %s" % imageFilePath)
             filePaths.append(imageFilePath)
             imageFile = open(imageFilePath, 'wb')
             imageFile.write(str(getattr(self, imageFileName)))
@@ -419,12 +419,12 @@ class OOoDocbookDocument(CPSDocument):
         archiveFileName = re.sub('\..+?$', '.zip', self.file.title)
         archiveFileName = re.sub('\s', '_', archiveFileName)
         archiveFilePath = os.path.join(tmpDirPath, archiveFileName)
-##         LOG(log_key, DEBUG, "Archive file path = %s" % archiveFilePath)
+        LOG(log_key, DEBUG, "Archive file path = %s" % archiveFilePath)
         # Create a ZipFile object to write into
         archiveFile = ZipFile(archiveFilePath, 'w', ZIP_DEFLATED)
         archiveInternalSubDirName = dbFileName.split('.')[0]
         for filePath in filePaths:
-##             LOG(log_key, DEBUG, "adding file to archive = %s" % filePath)
+            LOG(log_key, DEBUG, "adding file to archive = %s" % filePath)
             if filePath != dbFilePath:
                 filePathInTheArchive = os.path.join(archiveInternalSubDirName,
                                                     'images', os.path.split(filePath)[1])
@@ -624,6 +624,16 @@ class OOoDocbookDocument(CPSDocument):
             # Parse XML into DOM and modify it.
             document = xml.dom.minidom.parseString(content_xml)
 
+            # OOo Version : 1.x or 2.x (odf)
+            rootNode = document.documentElement
+            if rootNode.attributes['xmlns:office'].value == 'http://openoffice.org/2000/office':
+                oooVersion = 'ooo1'
+            elif rootNode.attributes['xmlns:office'].value == 'urn:oasis:names:tc:opendocument:xmlns:office:1.0':
+                oooVersion = 'ooo2'
+
+            LOG(log_key, DEBUG, "oooverstion = %s" % oooVersion)
+
+
             self._updateDomFromMetadata(document)
 
             # Write the final doc.
@@ -633,7 +643,14 @@ class OOoDocbookDocument(CPSDocument):
             f.close()
 
             # Recompress all into a zipfile.
-            fd, zipfilename = tempfile.mkstemp(suffix='.sxw')
+            if oooVersion == 'ooo1':
+                ooo_suffix = '.sxw'
+                ooo_content_type = 'application/vnd.sun.xml.writer'
+            else:
+                ooo_suffix = '.odt'
+                ooo_content_type = 'application/vnd.oasis.opendocument.text'
+
+            fd, zipfilename = tempfile.mkstemp(suffix=ooo_suffix)
             os.close(fd)
             os.unlink(zipfilename)
             z = ZipFile(zipfilename, 'w', ZIP_DEFLATED)
@@ -645,7 +662,7 @@ class OOoDocbookDocument(CPSDocument):
             # Now read the zipfile into memory
             f = open(zipfilename, 'rb')
             file = File(file.getId(), file.title, f)
-            file.content_type = 'application/vnd.sun.xml.writer'
+            file.content_type = ooo_content_type
             f.close()
 
             # Set file back in datamodel and recommit

@@ -45,6 +45,7 @@
   <property name="size_max">5242880</property>
   <property name="allowed_suffixes">
    <element value=".sxw"/>
+   <element value=".odt"/>
   </property>
  </widget>
  <table>

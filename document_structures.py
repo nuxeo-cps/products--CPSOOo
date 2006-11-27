@@ -151,7 +151,7 @@ ooo_docbook_document_layout = {
                 'description': 'cpsdoc_attachedFile_description',
                 'deletable': 1,
                 'size_max': 5*1024*1024,
-                'allowed_suffixes': ('.sxw',),
+                'allowed_suffixes': ('.sxw','.odt'),
             },
 
         },
