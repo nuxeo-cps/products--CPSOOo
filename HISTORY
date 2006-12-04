@@ -1,3 +1,24 @@
+===========================================================
+Package: CPSOOo 0.7.0
+===========================================================
+First release built by: madarche at: 2006-12-04T15:33:50
+SVN Tag: https://svn.nuxeo.org/pub/CPS3/products/CPSOOo/tags/0.7.0
+Build from: https://svn.nuxeo.org/pub/CPS3/products/CPSOOo/trunk@50420
+
+Requires:
+~~~~~~~~~
+-
+New features:
+~~~~~~~~~~~~~
+-
+Bug fixes:
+~~~~~~~~~~
+- Fixed the unit tests by providing newly generated ZIP archive files.
+- Fixed #1505 : Make the portal types description consistent.
+New internal features:
+~~~~~~~~~~~~~~~~~~~~~~
+- Removed deprecated _isinstance use.
+
 *******************************************
 ** CPSOOo V0.6.2 [R1 build 2006/07/31-12:09 by fermigier]
 ** SVN URL: https://svn.nuxeo.org/pub/CPS3/products/CPSOOo/trunk Revision: 47588

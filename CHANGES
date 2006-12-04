@@ -1,13 +1,12 @@
-Requires:
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
 ~~~~~~~~~
 -
-New features:
-~~~~~~~~~~~~~
--
-Bug fixes:
-~~~~~~~~~~
-- Fixed the unit tests by providing newly generated ZIP archive files.
-- Fixed #1505 : Make the portal types description consistent.
-New internal features:
-~~~~~~~~~~~~~~~~~~~~~~
-- Removed deprecated _isinstance use.
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
