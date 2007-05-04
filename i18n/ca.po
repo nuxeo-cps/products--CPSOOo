@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPSOOo\n"
-"POT-Creation-Date: 2006-11-17 11:19default\n"
+"POT-Creation-Date: 2007-05-04 11:18default\n"
 "PO-Revision-Date: 2006-07-14 21:58+0100\n"
 "Last-Translator: Domènec Arcalís <darcalis@gmail.com>\n"
 "Language-Team: català <darcalis@gmail.com>\n"
