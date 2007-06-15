@@ -18,4 +18,7 @@
  <field name="file_xml_subfiles" meta_type="CPS SubObjects Field">
   <property name="default_expr">nothing</property>
  </field>
+ <field name="Keywords" meta_type="CPS String List Field">
+  <property name="is_searchabletext">True</property>
+ </field>
 </object>

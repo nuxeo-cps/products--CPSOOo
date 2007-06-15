@@ -25,3 +25,5 @@ msgstr ""
 msgid "action_xml_docbook_export"
 msgstr ""
 
+msgid "label_keywords"
+msgstr ""

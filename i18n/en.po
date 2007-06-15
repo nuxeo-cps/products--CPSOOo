@@ -28,3 +28,6 @@ msgstr ""
 
 msgid "action_xml_docbook_export"
 msgstr "Export DocBook XML"
+
+msgid "label_keywords"
+msgstr "Keywords"

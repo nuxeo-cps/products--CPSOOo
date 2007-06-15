@@ -6,6 +6,28 @@
  <property name="style_prefix">layout_default_</property>
  <property name="flexible_widgets"/>
  <property name="validate_values_expr"></property>
+ <property name="label"></property>
+ <property name="label_edit"></property>
+ <property name="is_i18n">False</property>
+ <widget name="Keywords" meta_type="MultiSelect Widget">
+  <property name="fields">
+   <element value="Keywords"/>
+  </property>
+  <property name="label">label_keywords</property>
+  <property name="label_edit">label_keywords</property>
+  <property
+     name="description">This widget shows the keywords of the OOo document attached.</property>
+  <property name="is_i18n">True</property>
+  <property name="readonly_layout_modes"/>
+  <property name="hidden_layout_modes"/>
+  <property name="hidden_readonly_layout_modes"/>
+  <property name="hidden_empty">True</property>
+  <property name="widget_mode_expr">string:view</property>
+  <property name="vocabulary">subject_voc</property>
+  <property name="translated">True</property>
+  <property name="sorted">True</property>
+  <property name="size">4</property>
+ </widget>
  <widget name="Rights" meta_type="String Widget">
   <property name="fields">
    <element value="Rights"/>
@@ -52,6 +74,9 @@
   <row>
    <cell name="Source"/>
    <cell name="Rights"/>
+  </row>
+  <row>
+   <cell name="Keywords" ncols="2"/>
   </row>
   <row>
    <cell name="file" ncols="2"/>
