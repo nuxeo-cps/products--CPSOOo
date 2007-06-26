@@ -1,4 +1,4 @@
-# (C) Copyright 2004-2005 Nuxeo SARL <http://nuxeo.com>
+# (C) Copyright 2004-2007 Nuxeo SAS <http://nuxeo.com>
 # Authors:
 # Ruslan Spivak (Nuxeo)
 # M.-A. Darche (Nuxeo)
@@ -118,8 +118,8 @@ class TestOOoDocbookDocument(CPSOOoTestCase.CPSOOoTestCase):
 
         self.assertEqual(res_archive_entries_count,
                          out_archive_entries_count,
-                         ("Input has %s entries "
-                          "while output has %s entries")
+                         ("Result file has %s entries "
+                          "while it should have %s entries")
                          % (res_archive_entries_count,
                             out_archive_entries_count))
 
