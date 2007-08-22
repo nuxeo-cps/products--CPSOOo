@@ -1,5 +1,5 @@
 # -*- coding: ISO-8859-15 -*-
-# (C) Copyright 2004-2005 Nuxeo SARL <http://nuxeo.com>
+# (C) Copyright 2004-2007 Nuxeo SAS <http://nuxeo.com>
 # Authors:
 # M.-A. Darche (Nuxeo)
 # Ruslan Spivak (Nuxeo)
@@ -631,7 +631,7 @@ class OOoDocbookDocument(CPSDocument):
             elif rootNode.attributes['xmlns:office'].value == 'urn:oasis:names:tc:opendocument:xmlns:office:1.0':
                 oooVersion = 'ooo2'
 
-            LOG(log_key, DEBUG, "oooverstion = %s" % oooVersion)
+            LOG(log_key, DEBUG, "oooversion = %s" % oooVersion)
 
 
             self._updateDomFromMetadata(document)
