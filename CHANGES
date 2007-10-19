@@ -1,12 +1,12 @@
 Requires
 ~~~~~~~~
-- CPSI18n >= 1.0.0
+-
 New features
 ~~~~~~~~~~~~
 -
 Bug fixes
 ~~~~~~~~~
-- Better wording in tests.
+-
 New internal features
 ~~~~~~~~~~~~~~~~~~~~~
 - 
