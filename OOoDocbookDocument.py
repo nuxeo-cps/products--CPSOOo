@@ -1,5 +1,5 @@
 # -*- coding: ISO-8859-15 -*-
-# (C) Copyright 2004-2007 Nuxeo SAS <http://nuxeo.com>
+# (C) Copyright 2004-2008 Nuxeo SAS <http://nuxeo.com>
 # Authors:
 # M.-A. Darche (Nuxeo)
 # Ruslan Spivak (Nuxeo)
@@ -38,6 +38,7 @@ from AccessControl import ClassSecurityInfo
 from OFS.Image import File
 
 from Products.CMFCore.permissions import View
+from Products.CPSUtil.text import toLatin9
 from Products.CPSDocument.CPSDocument import CPSDocument
 
 from App.Common import rfc1123_date
@@ -57,17 +58,6 @@ from zLOG import LOG, \
      TRACE, DEBUG, BLATHER, INFO, PROBLEM, WARNING, ERROR, PANIC
 
 log_key = 'OOoDocbookDocument'
-
-def toLatin9(s):
-    if s is None:
-        return None
-    else:
-        # Replace RIGHT SINGLE QUOTATION MARK (unicode only)
-        # bythe APOSTROPHE (ascii and latin1).
-        # cf. http://www.cl.cam.ac.uk/~mgk25/ucs/quotes.html
-        s = s.replace(u'\u2019', u'\u0027')
-        #&#8217;
-        return s.encode('iso-8859-15', 'ignore')
 
 def toUnicode(s):
     return unicode(s, 'iso-8859-15')
