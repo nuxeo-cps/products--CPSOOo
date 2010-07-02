@@ -1,4 +1,21 @@
 ===========================================================
+Package: CPSOOo 0.8.3
+===========================================================
+First release built by: gracinet at: 2010-03-14T16:27:26
+Requires
+~~~~~~~~
+-
+New features
+~~~~~~~~~~~~
+-
+Bug fixes
+~~~~~~~~~
+- Switch to mercurial DCVS and hgbundler release manager
+New internal features
+~~~~~~~~~~~~~~~~~~~~~
+- 
+
+===========================================================
 Package: CPSOOo 0.8.2
 ===========================================================
 First release built by: madarche at: 2008-11-23T22:13:21
