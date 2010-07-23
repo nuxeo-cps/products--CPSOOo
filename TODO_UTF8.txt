@@ -1,1 +1,2 @@
-This product didn't exist in previous unicode branch, must be checked
+This product didn't exist in previous unicode branch, and is not
+unicode ready
